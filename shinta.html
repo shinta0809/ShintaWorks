@@ -5,7 +5,13 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Document</title>
+
+  <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+    crossorigin="anonymous"></script>
+
+
 </head>
 <style>
   h1 {
@@ -14,11 +20,30 @@
   }
 </style>
 
+<script type="text/javascript">
+  $(document).ready(function () {
+    $.ajax({
+      url: "data.xml",           //파일 경로, 어떤 파일을 불러올 것인지
+      cache: false,                //캐시 사용여부 true false
+      dataType: "xml",             //타입
+      success: function (data) {     //성공적으로 불러왔을때 할일
+        $(data).find("person").each(function () {
+          var personInfo = "name : " + $(this).find("name").text() + "</br>" + "age : " +
+            $(this).find("age").text() + "</br>";
+          $('#target').append(personInfo)
+        })
+      },
+      error: function () {           //불러오지 못했을때 할일
+        alert('Error loading XML document');
+      }
+
+    })
+
+  })
+</script>
+
 <body>
-  <h1>test</h1>
-  <h1>mac에서 테스트중</h1>
-  <h1>집 PC에서 테스트</h1>
-  <h1>집 PC에서 테스트2</h1>
+  <div id="target"></div>
 </body>
 
 </html>

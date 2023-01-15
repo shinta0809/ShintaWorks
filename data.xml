@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+  <contents>
+  <person>
+    <name>kim</name>
+    <age>30</age>
+  </person>   
+  <person>
+    <name>lee</name>
+    <age>20</age>
+  </person>   
+</contents>
